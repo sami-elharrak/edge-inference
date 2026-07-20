@@ -5,12 +5,14 @@ import time
 import csv
 import os
 from datetime import datetime
+import warnings
+warnings.filterwarnings("ignore")
 
-model = joblib.load('/home/sami/sensor-classifier/models/random_forest_model.pkl')
+model = joblib.load('/home/sami/edge-inference/models/random_forest_model.pkl')
 
 dht = adafruit_dht.DHT22(board.D4, use_pulseio=False)
 
-log_path = '/home/sami/sensor-classifier/outputs/inference_log.csv'
+log_path = '/home/sami/edge-inference/outputs/inference_log.csv'
 
 if not os.path.exists(log_path):
     with open(log_path, 'w', newline='') as f:
